@@ -6,6 +6,17 @@ title: Course Outline
 author: Trevor Douglas
 ---
 
+## Preliminaries
+
+- Git and GitHub will be used.  An optional tutorial will be the first lab.
+- AWS VM (Linux Ubuntu) will be used for programming assignments.
+- Course Project
+- Labs - A Lab schedule will be on URCourses.  There are approximately 6 labs building towards the project.
+- Assignments - Approximately 5 assignments.
+- Knowledge from the Labs and Assignments are important for the midterm and final.
+  
+---
+
 ## Lecture style
 
 The plan: Lectures and Labs will be in-class.
@@ -23,4 +34,3 @@ The plan: Lectures and Labs will be in-class.
   at your convenience.
 
   ---
-  

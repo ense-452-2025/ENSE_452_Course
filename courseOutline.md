@@ -25,6 +25,16 @@ Faculty of Engineering and Applied Science
 
 ---
 
+## Lab Instructor Information
+
+- **Instructor**: Trevor Douglas  
+- **Office**: ED473  
+- **Phone**: 306.585.5269  
+- **Email**: trevor.douglas@uregina.ca
+
+---
+
+
 ## Class Schedule
 
 - **Lectures**: ED621, Tue/Thu, 10:00–11:15  
@@ -132,11 +142,10 @@ _Highly recommended for real-world insights._
 - Contact instructor and Disability Resource Office early  
 - **Academic misconduct** rules strictly enforced  
   [Read the student code of conduct](https://www.uregina.ca/student/registrar/resources-for-students/academic-calendars-and-schedule/undergraduate-calendar/assets/pdf/2024-25/student-code-of-conduct-and-right-to-appeal.pdf)
-
+- [Be aware of counselling and student health services](https://www.uregina.ca/student-mental-health/index.html)
+  
 ---
 
 ## Questions?
 
 Thanks, and welcome to **ENSE /ENEL 452**!
-
----

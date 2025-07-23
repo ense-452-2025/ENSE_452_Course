@@ -1,3 +1,5 @@
 # PDR
 *.pdf
 
+#Mac
+.DS_Store

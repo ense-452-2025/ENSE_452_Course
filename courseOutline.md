@@ -65,29 +65,25 @@ You have already completed a significant embedded project in earlier courses. Th
      
 ---
 
-## Primary Course Texts
+## Course texts
 
-- **Better Embedded System Software**  
-  Philip Koopman, ISBN: 978-0-9844490-0-2  
-  _$30 paperback / $10 Kindle on Amazon_
+| <img src="./images/better-embedded-system-software.png" width="250" />  | <img src="./images/mazidinaimi.jpg" width="250" /> |
+|:--|:--|
 
-- **STM32F103 & Embedded Systems**  
-  Mazidi et al., Microdigitaled, 2020  
-  _Recommended review of ENEL351_
-
-- **The Definitive Guide to ARM Cortex-M3/M4**  
-  Joseph Yiu, Elsevier (U of R Library)
+- **Our primary text** is *Better Embedded System Software* by Philip Koopman. 
+- **A useful refresher:** *The STM32F103 ARM Microcontroller and Embedded Systems: Using Assembly and C*, by Mazidi et al.
 
 ---
 
-## Supplementary Texts (Optional)
+## Other resource texts
 
-- **Making Embedded Systems (2e)** — Elicia White  
-- **UML Statecharts in C/C++** — Miro Samek  
-- **TDD for Embedded C** — James Grenning  
+| <img src="./images/making-embedded-systems.jpg" width="250" />  | <img src="./images/zhuyifeng.jpg" width="250" /> | <img src="./images/secure-coding-seacord.jpg" width="250" />
+|:--|:--|:--|
 
-_Resources available through O'Reilly, author sites, etc._
-
+- **1** Making Embedded Systems 
+- **2** Embedded Systems with ARM Cortex-M
+- **3** Secure Coding in C and C++
+  
 ---
 
 ## Additional Resources
@@ -98,6 +94,72 @@ _Resources available through O'Reilly, author sites, etc._
 - **Embedded.fm Podcast**
 
 _Highly recommended for real-world insights._
+
+---
+
+## Preliminaries
+
+- Git and GitHub will be used.  An optional tutorial will be the first lab.
+- AWS VM (Linux Ubuntu) will be used for programming assignments.
+- Course Project
+- Labs - A Lab schedule will be on URCourses.  There are approximately 6 labs building towards the project.
+- Assignments - Approximately 5 assignments.
+- Knowledge from the Labs and Assignments are important for the midterm and final.
+
+  <!-- Creating a VM will allow you to have a development system.  This will be optional. -->
+
+---
+
+## Student Submissions
+
+- The course will be organized inside GitHub Classroom.
+- This means all assignments, labs, and course project will be submitted through our classroom.
+- Each time I ask for submission you will be provided a link that will create a private repository inside our classroom owned by you.
+- As you progress through your work you will commit your changes and ultimately push to your GitHub remote.
+- You will be graded on the work pushed to your repository so make sure you do this!
+
+---
+
+## Lecture style
+
+The plan: Lectures and Labs will be in-class.
+
+- I will sometimes just write on the board, so you should bring  
+  a pencil and notebook (or equivalent technology) to the lecture.  
+  - In these cases no content will be posted online.
+
+- Sometimes I'll present information using slides, supplemented  
+  with writing on the board.  
+  - In these cases the slides will be posted after the lecture,  
+    but not the board notes, so you should still make your own notes.
+
+- For some course content I will post videos that can be watched  
+  at your convenience.
+
+---
+
+## Lab Project 
+
+We want it to include:
+
+- Version Control (GitHub etc.)
+- Nucleo Board
+- at least two asynchronous device inputs  
+- at least two device outputs  
+- a CLI with serial communications  
+- RTOS elements such as task communication
+- an interesting, non-trivial algorithm  
+
+---
+
+## Lab Project
+
+In previous offerings we've had:
+
+- an air-flow based ball height control system  
+- an inverted pendulum controller  
+- a traffic intersection controller  
+- an elevator controller  
 
 ---
 
@@ -129,6 +191,8 @@ _Highly recommended for real-world insights._
 
 - Individual effort required  
 - No sharing of code or detailed solutions
+- STM32CubeIDE code generation is allowed.
+- Use of ChatGPT is allowed but must be docemented when used.
 
 ### Late Submissions
 

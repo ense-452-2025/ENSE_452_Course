@@ -127,3 +127,56 @@ One place I worked at was tape storage backup designed by HW Engineers.  Entirel
   *(e.g., mobile phones, network switches, routers)*
 
 - Monitoring and logging
+
+---
+
+## In engineering one can usefully model most anything as a
+
+- **system**.  A succinct definition: A system is a mapping of a
+  set of inputs into a set of outputs.
+
+- Any computing system can be usefully modelled this way.
+
+  <img src="./images/rtsystem.png" width="400" />
+
+  ---
+
+---
+
+## The computing system has a set of one or more inputs entering a  
+black box (which performs the system function), and a set of one or  
+more outputs exiting the black box.
+
+- Most frequently, the system receives its inputs from  
+  *sensors* and *input devices* and delivers its outputs  
+  to *actuators* and *displays*.
+
+---
+
+## Typical architecture of microcontroller
+
+<img src="images/typical-architecture.png" width="700" />
+
+---
+
+## The presence of the FPGA/ASIC implies the possibility of custom  
+hardware (either in the field or at fabrication time), which in turn  
+means there is another engineering tradeoff.
+
+- do everything in software?  
+- more flexible, can change by changing firmware
+- do everything in custom hardware?  
+- lower power, lower cost (but probably higher NRE cost), better performance
+
+<!-- _note:
+one place I work had software integrated with custom asics.
+One of the HW design engineers explained it to me like in a plumbing situation.  The software adjusts the valves and pipes and the h/w is the water flowing through -->
+---
+
+## It turns out that the hardware/software partitioning of an embedded  
+system is a tricky business.
+
+- *hardware/software codesign*
+
+In our case in this class: we have a fixed hardware platform with no  
+FPGA. Our focus is *mostly* on software.

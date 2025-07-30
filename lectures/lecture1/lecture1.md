@@ -77,9 +77,9 @@ Various applications need different requirements.  Relate Nortel phone developme
 
 ## Other notable features of embedded systems
 
-- They often use very complex processing algorithms
+- They often use very complex processing algorithms.
 
-- They may include sophisticated *user interfaces*
+- They may include sophisticated *user interfaces*.
 
 - They often have *real-time* deadlines  
   - Hard real-time  
@@ -164,19 +164,162 @@ hardware (either in the field or at fabrication time), which in turn
 means there is another engineering tradeoff.
 
 - do everything in software?  
-- more flexible, can change by changing firmware
+- more flexible, can change by changing firmware.
 - do everything in custom hardware?  
-- lower power, lower cost (but probably higher NRE cost), better performance
+- lower power, lower cost (but probably higher NRE cost), better performance.
+- It turns out that the hardware/software partitioning of an embedded  
+system is a tricky business.
+- In our case in this class: we have a fixed hardware platform with no  
+FPGA. Our focus is *mostly* on software.
 
 <!-- _note:
 one place I work had software integrated with custom asics.
 One of the HW design engineers explained it to me like in a plumbing situation.  The software adjusts the valves and pipes and the h/w is the water flowing through -->
+
 ---
 
-## It turns out that the hardware/software partitioning of an embedded  
-system is a tricky business.
+## Example embedded system
 
-- *hardware/software codesign*
+- Embedded systems must deal with concurrency: events arrive in unpredictable patterns, and the system must cope.
+- The decisions we make as we design a system to handle concurrency give rise to a number of *concurrency architectures*.
 
-In our case in this class: we have a fixed hardware platform with no  
-FPGA. Our focus is *mostly* on software.
+---
+
+Let's take an evocative and familiar example: a temperature controller—the thermostat/furnace system in a house.
+
+> The choice of concurrency architecture used to solve this problem results in very different systems.
+
+---
+
+## But first we need to identify some requirements!
+
+Here’s a first pass view of the temperature controller requirements:
+
+1. Monitor temperature of the house and turn the furnace on/off to keep it constant  
+2. At bedtime turn down the temperature to save fuel, in the morning turn it back up to the normal setting  
+3. Allow user to increase/decrease the temperature with a keypad
+
+---
+
+## Three solutions using classical architectural styles:
+
+1. One big loop (BDL): polls sensors and system time, stores state in variables and controls the temperature accordingly. 
+2. Finite State Machine (FSM): reacts to events from the outside world, moves between states, uses global variables for communication.
+3. Independent tasks (OS/RTOS): tasks run concurrently and communicate via interprocess communication.
+
+---
+
+## These three designs map to real-time embedded system strategies
+
+- **#1:** Simple, no concurrency, no [*race conditions*](https://en.wikipedia.org/wiki/Race_condition)  
+  - Easy to break, hard to maintain, not flexible
+- **#2 and #3:** More sophisticated, concurrent, potential for race conditions  
+  - More modular, maintainable, but riskier
+
+---
+
+## **Example - implementation of design 3: independent tasks**
+
+<!-- _note:
+**Pseudocode for controlling the temperature
+
+`
+function monitor_temperature() {
+  while (true) {
+    temp = measure_temp()
+    if (temp < setting)
+      furnace_start()
+    else if (temp > setting + hysteresis)
+      furnace_stop()
+  }
+}
+`
+
+- hysteresis is some allowable delta from setpoint
+
+
+`
+function monitor_time_of_day() {
+  while (true) {
+    time = get_time()
+    if (time == bedtime)
+      setting = NIGHTTIME_TEMP
+    else if (time == morning)
+      setting = DAYTIME_TEMP
+  }
+}
+
+function monitor_user_keypad() {
+  while (true) {
+    key = wait_for_keypress()
+    if (key == UP)
+      setting++
+    else if (key == DOWN)
+      setting--
+  }
+}
+`
+-->
+
+---
+
+## Why Three Tasks?
+
+Notice that the problem was divided into *three* tasks (why three?).
+
+Some communication is needed between tasks — this is accomplished via global (shared) variables, for example `setting`.  
+> This is **evil**.
+
+Apart from the communication problem (which is a **killer!**), this design has some good features:
+
+- Each feature maps to a separate task, and each task is implemented as a forever loop — it’s a modular design  
+- Each task responds to asynchronous or synchronous external events  
+- As a result, the programmer can think of each task as an independent little project
+
+---
+
+## Concurrency and Race Conditions
+
+What sorts of problems can occur in a system with concurrency, and  
+*actual* race conditions?
+
+---
+
+## Therac-25: Computer-controlled radiotherapy
+
+- Canadian company, deployed 11 systems in the 1980s  
+- Single programmer, little formal background  
+- Software undocumented, written in assembly language  
+- Lots of asynchronous tasks handling user input/output, system monitoring, and control  
+- Communication via global variables shared between tasks — no proper handling of concurrent access  
+- ⚠️ At least **5 people died** due to radiation overdoses 100× the specified amount
+
+---
+
+## Therac-25: More Issues
+
+- The company believed software was immune to failure:  
+  > "*Software does not wear out like hardware*"
+- Investigations found the software development process was deeply flawed
+
+---
+
+## Toyota Unintended Acceleration
+
+- [Talk by Phil Koopman (2014-09-18)](https://betterembsw.blogspot.ca/2014/09/a-case-study-of-toyota-unintended.html)  
+  *(Slides and streaming video available)*
+
+  - Several deaths directly linked to software development process flaws
+<!-- _note:
+**Give example about 4th year project using an accelerometer and that their primary use was in airbags.  Engineering can really impact society.
+
+-->
+---
+
+## Time is Hard in Software
+
+- [Post by Phil Koopman](https://betterembsw.blogspot.ca/2016/02/a-nice-rant-about-representing-computer.html)  
+  Links to a Computerphile video rant about time zones
+
+- Includes a “rogues gallery” of software time-handling blunders
+

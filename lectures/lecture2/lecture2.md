@@ -2,8 +2,8 @@
 marp: true
 theme: default
 paginate: true
-title: Lecture
-author: ENEL452 — Fall 2024
+title: Lecture 2
+author: Trevor Douglas
 ---
 
 ## A Bug in the Boeing 787
